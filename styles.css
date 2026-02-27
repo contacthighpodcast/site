@@ -6,8 +6,8 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #111;
-  color: #fff;
+  background: #00ff6d;
+  color: #000d78;
 }
 
 .hero {
@@ -47,15 +47,22 @@ p {
   display: inline-block;
   padding: 14px 28px;
   border-radius: 6px;
-  background: #fff;
-  color: #000;
+  background: #000d78;
+  color: #00ff6d;
   text-decoration: none;
   font-weight: 600;
   transition: 0.2s ease;
 }
 
 .cta-button:hover {
-  opacity: 0.85;
+  background: #0012a8;
+}
+
+.logo {
+  max-width: 500px;
+  width: 90%;
+  height: auto;
+  margin-bottom: 30px;
 }
 
 /* Tablet and up */
