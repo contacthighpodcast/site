@@ -71,9 +71,3 @@ p {
     font-size: 3.5rem;
   }
 }
-
-@media (max-width: 768px) {
-  .hero {
-    background-position: center top;
-  }
-}
