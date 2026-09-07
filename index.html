@@ -13,14 +13,9 @@
 <style>
   :root {
     --paper: #F5F0E1;
-    --paper-dark: #EAE2CB;
-    --ink: #1C2B4A;
-    --ink-soft: #2C3E63;
-    --green: #3FCB50;
-    --green-deep: #2FA33D;
-    --yellow: #F5C518;
+    --blue: #0033BE;
+    --green: #00d33b;
     --charcoal: #2B2B2B;
-    --white: #FFFDF8;
   }
 
   * { box-sizing: border-box; }
@@ -43,7 +38,7 @@
     font-family: "quinella", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: var(--ink);
+    color: var(--blue);
     margin: 0;
     line-height: 1.05;
   }
@@ -64,7 +59,7 @@
     top: 0;
     z-index: 50;
     background: var(--paper);
-    border-bottom: 3px solid var(--ink);
+    border-bottom: 3px solid var(--blue);
   }
   .nav .wrap {
     display: flex;
@@ -78,7 +73,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 1.4rem;
-    color: var(--ink);
+    color: var(--blue);
     letter-spacing: 0.5px;
     transform: rotate(-2deg);
     display: inline-block;
@@ -94,10 +89,10 @@
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
-    color: var(--ink);
+    color: var(--blue);
     position: relative;
   }
-  .nav-links a:hover { color: var(--green-deep); }
+  .nav-links a:hover { color: var(--green); }
   .nav-toggle { display: none; }
 
   @media (max-width: 720px) {
@@ -109,7 +104,7 @@
       right: 0;
       flex-direction: column;
       background: var(--paper);
-      border-bottom: 3px solid var(--ink);
+      border-bottom: 3px solid var(--blue);
       padding: 18px 28px;
       gap: 16px;
     }
@@ -117,7 +112,7 @@
     .nav-toggle {
       display: block;
       background: none;
-      border: 2px solid var(--ink);
+      border: 2px solid var(--blue);
       border-radius: 8px;
       padding: 6px 10px;
       font-size: 1.1rem;
@@ -153,25 +148,25 @@
   }
 
   .logo-card {
-    background: var(--white);
-    border: 3px solid var(--ink);
+    background: var(--paper);
+    border: 3px solid var(--blue);
     border-radius: 4px;
     padding: 26px 40px;
     transform: rotate(-3deg);
-    box-shadow: 8px 8px 0 var(--ink);
+    box-shadow: 8px 8px 0 var(--blue);
     position: relative;
     animation: dropIn 0.7s cubic-bezier(.2,.9,.3,1.2) both;
   }
   .logo-card h1 {
     font-size: clamp(2.6rem, 7vw, 4.6rem);
-    color: var(--ink);
+    color: var(--blue);
   }
-  .logo-card h1 span { color: var(--green-deep); }
+  .logo-card h1 span { color: var(--green); }
 
   .tagline-strip {
     margin-top: 34px;
-    background: var(--yellow);
-    color: var(--ink);
+    background: var(--blue);
+    color: var(--blue);
     font-family: "quinella", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -189,7 +184,7 @@
     margin-top: 22px;
     max-width: 460px;
     font-size: 1.02rem;
-    color: var(--ink-soft);
+    color: var(--blue);
     animation: fadeUp 0.7s 0.3s both;
   }
 
@@ -210,13 +205,13 @@
     display: inline-block;
     padding: 13px 26px;
     border-radius: 999px;
-    border: 3px solid var(--ink);
+    border: 3px solid var(--blue);
     font-size: 1.02rem;
     transition: transform 0.15s ease;
   }
   .btn:hover { transform: translateY(-2px) rotate(-1deg); }
-  .btn-primary { background: var(--green); color: var(--ink); }
-  .btn-outline { background: transparent; color: var(--ink); }
+  .btn-primary { background: var(--green); color: var(--blue); }
+  .btn-outline { background: transparent; color: var(--blue); }
 
   @keyframes dropIn {
     from { opacity: 0; transform: translateY(-40px) rotate(-8deg) scale(0.9); }
@@ -242,7 +237,7 @@
     transform: rotate(-1deg);
   }
   .section-tape {
-    background: var(--ink);
+    background: var(--blue);
     color: var(--paper);
     font-size: 0.8rem;
     font-weight: 700;
@@ -253,7 +248,7 @@
   }
   .section p.lead {
     max-width: 620px;
-    color: var(--ink-soft);
+    color: var(--blue);
     margin-top: -22px;
     margin-bottom: 40px;
   }
@@ -269,7 +264,7 @@
     .about-grid { grid-template-columns: 1fr; }
   }
   .about-copy p { margin: 0 0 16px; }
-  .about-copy strong { color: var(--ink); }
+  .about-copy strong { color: var(--blue); }
 
   .polaroid-row {
     display: flex;
@@ -278,7 +273,7 @@
     justify-content: center;
   }
   .polaroid {
-    background: var(--white);
+    background: var(--paper);
     border: 1px solid rgba(0,0,0,0.08);
     padding: 12px 12px 46px;
     width: 190px;
@@ -291,11 +286,11 @@
     width: 100%;
     aspect-ratio: 1;
     border-radius: 2px;
-    background: linear-gradient(135deg, var(--green), var(--ink));
+    background: linear-gradient(135deg, var(--green), var(--blue));
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--white);
+    color: var(--paper);
     font-family: "quinella", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -311,7 +306,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 0.95rem;
-    color: var(--ink);
+    color: var(--blue);
   }
 
   /* ---------- EPISODES (ticket stubs) ---------- */
@@ -325,8 +320,8 @@
   .stub {
     scroll-snap-align: start;
     flex: 0 0 250px;
-    background: var(--white);
-    border: 2px solid var(--ink);
+    background: var(--paper);
+    border: 2px solid var(--blue);
     border-radius: 10px;
     position: relative;
     padding: 18px 18px 20px;
@@ -344,7 +339,7 @@
     border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);
-    border: 2px solid var(--ink);
+    border: 2px solid var(--blue);
   }
   .stub::before { left: -12px; }
   .stub::after { right: -12px; }
@@ -353,7 +348,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 0.8rem;
-    background: var(--yellow);
+    background: var(--blue);
     display: inline-block;
     padding: 3px 10px;
     border-radius: 999px;
@@ -365,7 +360,7 @@
   }
   .stub p {
     font-size: 0.88rem;
-    color: var(--ink-soft);
+    color: var(--blue);
     margin: 0 0 14px;
   }
   .stub .perf {
@@ -379,7 +374,7 @@
     font-weight: 600;
     font-size: 0.9rem;
     text-decoration: none;
-    color: var(--green-deep);
+    color: var(--green);
   }
 
   .see-all {
@@ -411,15 +406,15 @@
     z-index: 2;
   }
   .guest-card .frame {
-    background: var(--white);
+    background: var(--paper);
     border: 1px solid rgba(0,0,0,0.1);
     box-shadow: 3px 5px 10px rgba(28,43,74,0.15);
     padding: 10px;
   }
   .guest-card .frame .photo {
     aspect-ratio: 4/5;
-    background: linear-gradient(160deg, var(--ink), var(--green-deep));
-    color: var(--white);
+    background: linear-gradient(160deg, var(--blue), var(--green));
+    color: var(--paper);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -434,18 +429,18 @@
     font-weight: 400;
     font-style: normal;
     font-size: 1rem;
-    color: var(--ink);
+    color: var(--blue);
   }
   .guest-card span {
     font-size: 0.82rem;
-    color: var(--ink-soft);
+    color: var(--blue);
   }
   .guest-card:nth-child(2) { transform: rotate(2deg); }
   .guest-card:nth-child(3) { transform: rotate(-2deg); }
 
   /* ---------- MERCH ---------- */
   .merch-box {
-    border: 3px dashed var(--ink);
+    border: 3px dashed var(--blue);
     border-radius: 14px;
     padding: 46px 30px;
     text-align: center;
@@ -458,11 +453,11 @@
     font-size: 1.6rem;
     margin-bottom: 10px;
   }
-  .merch-box p { color: var(--ink-soft); max-width: 480px; margin: 0 auto 20px; }
+  .merch-box p { color: var(--blue); max-width: 480px; margin: 0 auto 20px; }
 
   /* ---------- NEWSLETTER ---------- */
   .newsletter {
-    background: var(--ink);
+    background: var(--blue);
     color: var(--paper);
     border-radius: 16px;
     padding: 50px 40px;
@@ -492,7 +487,7 @@
     font-weight: 400;
     font-style: normal;
     background: var(--green);
-    color: var(--ink);
+    color: var(--blue);
     border: none;
     border-radius: 999px;
     padding: 13px 24px;
@@ -503,7 +498,7 @@
   /* ---------- FOOTER ---------- */
   footer {
     padding: 50px 0 40px;
-    border-top: 3px solid var(--ink);
+    border-top: 3px solid var(--blue);
     text-align: center;
   }
   .footer-logo {
@@ -511,7 +506,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 1.3rem;
-    color: var(--ink);
+    color: var(--blue);
     transform: rotate(-2deg);
     display: inline-block;
     margin-bottom: 14px;
@@ -527,10 +522,10 @@
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
-    color: var(--ink-soft);
+    color: var(--blue);
     border-bottom: 2px solid transparent;
   }
-  .footer-socials a:hover { border-color: var(--green-deep); color: var(--ink); }
+  .footer-socials a:hover { border-color: var(--green); color: var(--blue); }
   footer .fine {
     font-size: 0.8rem;
     color: rgba(28,43,74,0.55);
@@ -541,7 +536,7 @@
   }
 
   a:focus-visible, button:focus-visible, input:focus-visible {
-    outline: 3px solid var(--green-deep);
+    outline: 3px solid var(--green);
     outline-offset: 2px;
   }
 </style>
