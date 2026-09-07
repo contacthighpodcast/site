@@ -24,14 +24,14 @@
 
   body {
     margin: 0;
-    background: var(--paper);
+    background-color: var(--paper);
+    background-image: url("bg1.png");
+    background-repeat: repeat;
+    background-attachment: fixed;
     color: var(--charcoal);
     font-family: 'Montserrat', sans-serif;
     font-size: 17px;
     line-height: 1.6;
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(28,43,74,0.06) 1px, transparent 0);
-    background-size: 22px 22px;
   }
 
   h1, h2, h3, .display {
@@ -531,6 +531,10 @@
     color: rgba(28,43,74,0.55);
   }
 
+  @media (max-width: 640px) {
+    .hero img[alt=""] { width: 72px; top: 1%; right: 3%; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
   }
@@ -545,7 +549,7 @@
 
 <nav class="nav">
   <div class="wrap">
-    <a href="#top" class="nav-logo">Contact High</a>
+    <a href="#top" class="nav-logo"><img src="nameplate.png" alt="Contact High" style="height: 36px; width: auto; display: block;"></a>
     <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -561,8 +565,10 @@
   <div class="wrap">
     <div class="corkboard">
       <span class="pin" style="top: 6%; left: 44%;"></span>
+      <span class="pin" style="top: 4%; right: 12%;"></span>
+      <img src="5-Degree.gif" alt="" style="position: absolute; top: 2%; right: 6%; width: 120px; height: auto; filter: drop-shadow(4px 6px 8px rgba(28,43,74,0.3)); z-index: 4;">
       <div class="logo-card">
-        <h1>Contact <span>High</span></h1>
+        <img src="nameplate.png" alt="Contact High" style="width: min(80vw, 420px); height: auto; display: block;">
       </div>
       <div class="tagline-strip">Some guy on the street gave us microphones. Bad idea.</div>
       <p class="subtag">A comedy podcast hosted by Riley Flanagan &amp; Michael Fleming. New episodes every week — real conversations that go nowhere good.</p>
