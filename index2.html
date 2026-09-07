@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact High Podcast</title>
+<meta name="description" content="Contact High — a comedy podcast hosted by Riley Flanagan and Michael Fleming. New episodes every week.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/fcu3aee.css">
+  
+<style>
+  :root {
+    --paper: #F5F0E1;
+    --paper-dark: #EAE2CB;
+    --ink: #1C2B4A;
+    --ink-soft: #2C3E63;
+    --green: #3FCB50;
+    --green-deep: #2FA33D;
+    --yellow: #F5C518;
+    --charcoal: #2B2B2B;
+    --white: #FFFDF8;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--charcoal);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(28,43,74,0.06) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+
+  h1, h2, h3, .display {
+    font-family: "quinella", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.05;
+  }
+
+  a { color: inherit; }
+
+  img { max-width: 100%; display: block; }
+
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--paper);
+    border-bottom: 3px solid var(--ink);
+  }
+  .nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+  .nav-logo {
+    font-family: "quinella", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4rem;
+    color: var(--ink);
+    letter-spacing: 0.5px;
+    transform: rotate(-2deg);
+    display: inline-block;
+  }
+  .nav-links {
+    display: flex;
+    gap: 26px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--ink);
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--green-deep); }
+  .nav-toggle { display: none; }
+
+  @media (max-width: 720px) {
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: var(--paper);
+      border-bottom: 3px solid var(--ink);
+      padding: 18px 28px;
+      gap: 16px;
+    }
+    .nav-links.open { display: flex; }
+    .nav-toggle {
+      display: block;
+      background: none;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+  }
+
+  /* ---------- HERO / CORKBOARD ---------- */
+  .hero {
+    position: relative;
+    padding: 70px 0 110px;
+    overflow: hidden;
+  }
+  .corkboard {
+    position: relative;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .pin {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle at 35% 30%, #ff6b6b, #b23a3a 70%);
+    border-radius: 50%;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.35);
+    z-index: 5;
+  }
+
+  .logo-card {
+    background: var(--white);
+    border: 3px solid var(--ink);
+    border-radius: 4px;
+    padding: 26px 40px;
+    transform: rotate(-3deg);
+    box-shadow: 8px 8px 0 var(--ink);
+    position: relative;
+    animation: dropIn 0.7s cubic-bezier(.2,.9,.3,1.2) both;
+  }
+  .logo-card h1 {
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
+    color: var(--ink);
+  }
+  .logo-card h1 span { color: var(--green-deep); }
+
+  .tagline-strip {
+    margin-top: 34px;
+    background: var(--yellow);
+    color: var(--ink);
+    font-family: "quinella", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(1rem, 2.4vw, 1.35rem);
+    padding: 14px 26px;
+    display: inline-block;
+    transform: rotate(1.5deg);
+    box-shadow: 5px 5px 0 rgba(28,43,74,0.25);
+    position: relative;
+    animation: dropIn 0.7s 0.15s cubic-bezier(.2,.9,.3,1.2) both;
+    clip-path: polygon(2% 8%, 98% 0%, 100% 92%, 1% 100%);
+  }
+
+  .subtag {
+    margin-top: 22px;
+    max-width: 460px;
+    font-size: 1.02rem;
+    color: var(--ink-soft);
+    animation: fadeUp 0.7s 0.3s both;
+  }
+
+  .hero-ctas {
+    margin-top: 34px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 0.7s 0.42s both;
+  }
+
+  .btn {
+    font-family: "quinella", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    display: inline-block;
+    padding: 13px 26px;
+    border-radius: 999px;
+    border: 3px solid var(--ink);
+    font-size: 1.02rem;
+    transition: transform 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-2px) rotate(-1deg); }
+  .btn-primary { background: var(--green); color: var(--ink); }
+  .btn-outline { background: transparent; color: var(--ink); }
+
+  @keyframes dropIn {
+    from { opacity: 0; transform: translateY(-40px) rotate(-8deg) scale(0.9); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section {
+    padding: 80px 0;
+    border-top: 3px dashed rgba(28,43,74,0.25);
+  }
+  .section-head {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .section-head h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    transform: rotate(-1deg);
+  }
+  .section-tape {
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 3px;
+    transform: rotate(3deg);
+    letter-spacing: 0.3px;
+  }
+  .section p.lead {
+    max-width: 620px;
+    color: var(--ink-soft);
+    margin-top: -22px;
+    margin-bottom: 40px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: start;
+  }
+  @media (max-width: 800px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+  .about-copy p { margin: 0 0 16px; }
+  .about-copy strong { color: var(--ink); }
+
+  .polaroid-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .polaroid {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 12px 12px 46px;
+    width: 190px;
+    box-shadow: 4px 6px 14px rgba(28,43,74,0.15);
+    position: relative;
+  }
+  .polaroid:nth-child(1) { transform: rotate(-6deg); }
+  .polaroid:nth-child(2) { transform: rotate(4deg); margin-top: 26px; }
+  .polaroid .photo {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 2px;
+    background: linear-gradient(135deg, var(--green), var(--ink));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-family: "quinella", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.6rem;
+  }
+  .polaroid figcaption {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: "quinella", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  /* ---------- EPISODES (ticket stubs) ---------- */
+  .stub-row {
+    display: flex;
+    gap: 26px;
+    overflow-x: auto;
+    padding: 10px 6px 26px;
+    scroll-snap-type: x proximity;
+  }
+  .stub {
+    scroll-snap-align: start;
+    flex: 0 0 250px;
+    background: var(--white);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    position: relative;
+    padding: 18px 18px 20px;
+    transition: transform 0.18s ease;
+  }
+  .stub:nth-child(odd) { transform: rotate(-2deg); }
+  .stub:nth-child(even) { transform: rotate(1.5deg); }
+  .stub:hover { transform: rotate(0deg) translateY(-4px); }
+  .stub::before, .stub::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--paper);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 2px solid var(--ink);
+  }
+  .stub::before { left: -12px; }
+  .stub::after { right: -12px; }
+  .stub .ep-num {
+    font-family: "quinella", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.8rem;
+    background: var(--yellow);
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  .stub h3 {
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+  }
+  .stub p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+  .stub .perf {
+    border-top: 2px dashed rgba(28,43,74,0.3);
+    margin: 12px 0 12px;
+  }
+  .stub a.watch {
+    font-family: "quinella", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--green-deep);
+  }
+
+  .see-all {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* ---------- GUESTS ---------- */
+  .guest-tape-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: flex-start;
+  }
+  .guest-card {
+    width: 170px;
+    text-align: center;
+    position: relative;
+  }
+  .guest-card .tape-strip {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 70px;
+    height: 22px;
+    background: rgba(245,197,24,0.85);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    z-index: 2;
+  }
+  .guest-card .frame {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 3px 5px 10px rgba(28,43,74,0.15);
+    padding: 10px;
+  }
+  .guest-card .frame .photo {
+    aspect-ratio: 4/5;
+    background: linear-gradient(160deg, var(--ink), var(--green-deep));
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "quinella", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+  }
+  .guest-card h4 {
+    margin-top: 12px;
+    font-family: "quinella", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .guest-card span {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+  .guest-card:nth-child(2) { transform: rotate(2deg); }
+  .guest-card:nth-child(3) { transform: rotate(-2deg); }
+
+  /* ---------- MERCH ---------- */
+  .merch-box {
+    border: 3px dashed var(--ink);
+    border-radius: 14px;
+    padding: 46px 30px;
+    text-align: center;
+    background: repeating-linear-gradient(
+      45deg, rgba(63,203,80,0.08), rgba(63,203,80,0.08) 10px,
+      transparent 10px, transparent 20px
+    );
+  }
+  .merch-box h3 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+  .merch-box p { color: var(--ink-soft); max-width: 480px; margin: 0 auto 20px; }
+
+  /* ---------- NEWSLETTER ---------- */
+  .newsletter {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 16px;
+    padding: 50px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .newsletter h2 { color: var(--paper); font-size: 1.9rem; transform: none; }
+  .newsletter p { color: rgba(245,240,225,0.75); margin-top: 8px; max-width: 380px; }
+  .newsletter form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .newsletter input[type="email"] {
+    padding: 13px 16px;
+    border-radius: 999px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.98rem;
+    min-width: 230px;
+  }
+  .newsletter button {
+    font-family: "quinella", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background: var(--green);
+    color: var(--ink);
+    border: none;
+    border-radius: 999px;
+    padding: 13px 24px;
+    cursor: pointer;
+    font-size: 0.98rem;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    padding: 50px 0 40px;
+    border-top: 3px solid var(--ink);
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: "quinella", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.3rem;
+    color: var(--ink);
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+  .footer-socials {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .footer-socials a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    border-bottom: 2px solid transparent;
+  }
+  .footer-socials a:hover { border-color: var(--green-deep); color: var(--ink); }
+  footer .fine {
+    font-size: 0.8rem;
+    color: rgba(28,43,74,0.55);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 3px solid var(--green-deep);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#top" class="nav-logo">Contact High</a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#episodes">Episodes</a></li>
+      <li><a href="#guests">Guests</a></li>
+      <li><a href="#merch">Merch</a></li>
+      <li><a href="#follow">Follow</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="corkboard">
+      <span class="pin" style="top: 6%; left: 44%;"></span>
+      <div class="logo-card">
+        <h1>Contact <span>High</span></h1>
+      </div>
+      <div class="tagline-strip">Some guy on the street gave us microphones. Bad idea.</div>
+      <p class="subtag">A comedy podcast hosted by Riley Flanagan &amp; Michael Fleming. New episodes every week — real conversations that go nowhere good.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#episodes">Watch the latest episode</a>
+        <a class="btn btn-outline" href="#follow">Listen on Spotify</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What is this, exactly</h2>
+      <span class="section-tape">the pitch</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p><strong>Contact High</strong> is a weekly comedy podcast that starts with one topic and ends somewhere completely different. Think caveman chemotherapy, Asian Santa Claus, and whether Batman would vote Republican — all in the same episode.</p>
+        <p>Hosted by <strong>Riley Flanagan</strong> and <strong>Michael Fleming</strong>, recorded in a studio that's held together by duct tape and mutual delusion, edited by <strong>Sam Sawyer</strong>, who deserves a raise.</p>
+        <p>New full episodes drop weekly on YouTube and Spotify, with clips scattered across everywhere else.</p>
+      </div>
+      <div class="polaroid-row">
+        <figure class="polaroid">
+          <div class="photo">RF</div>
+          <figcaption>Riley</figcaption>
+        </figure>
+        <figure class="polaroid">
+          <div class="photo">MF</div>
+          <figcaption>Michael</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="episodes">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Recent episodes</h2>
+      <span class="section-tape">watch now</span>
+    </div>
+    <p class="lead">Scroll sideways. That's the interaction. We didn't overthink it.</p>
+    <div class="stub-row">
+      <article class="stub">
+        <span class="ep-num">EP. 17</span>
+        <h3>Alexis Tramoni Got Sued For A Holocaust Joke</h3>
+        <p>A French comedian joins us to talk lawsuits, synagogues, and Gandhi's letters to Hitler.</p>
+        <div class="perf"></div>
+        <a class="watch" href="#">Watch on YouTube →</a>
+      </article>
+      <article class="stub">
+        <span class="ep-num">EP. 16</span>
+        <h3>We Ranked Every Religion By How Much They Poop</h3>
+        <p>Also: a roofie trust test and the Santa Claus discourse nobody asked for.</p>
+        <div class="perf"></div>
+        <a class="watch" href="#">Watch on YouTube →</a>
+      </article>
+      <article class="stub">
+        <span class="ep-num">EP. 15</span>
+        <h3>Episode 15 of Contact High</h3>
+        <p>Add your real title and description here when you plug in the RSS feed.</p>
+        <div class="perf"></div>
+        <a class="watch" href="#">Watch on YouTube →</a>
+      </article>
+      <article class="stub">
+        <span class="ep-num">EP. 14</span>
+        <h3>Episode 14 of Contact High</h3>
+        <p>Add your real title and description here when you plug in the RSS feed.</p>
+        <div class="perf"></div>
+        <a class="watch" href="#">Watch on YouTube →</a>
+      </article>
+    </div>
+    <div class="see-all">
+      <a class="btn btn-outline" href="#">See every episode</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="guests">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Who's stopped by</h2>
+      <span class="section-tape">guest wall</span>
+    </div>
+    <div class="guest-tape-row">
+      <div class="guest-card">
+        <div class="tape-strip"></div>
+        <div class="frame">
+          <div class="photo">AT</div>
+        </div>
+        <h4>Alexis Tramoni</h4>
+        <span>Episode 17</span>
+      </div>
+      <div class="guest-card">
+        <div class="tape-strip"></div>
+        <div class="frame">
+          <div class="photo">?</div>
+        </div>
+        <h4>Add a guest</h4>
+        <span>Episode —</span>
+      </div>
+      <div class="guest-card">
+        <div class="tape-strip"></div>
+        <div class="frame">
+          <div class="photo">?</div>
+        </div>
+        <h4>Add a guest</h4>
+        <span>Episode —</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="merch">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Merch</h2>
+      <span class="section-tape">coming soon</span>
+    </div>
+    <div class="merch-box">
+      <h3>The tie-dye hoodie is coming.</h3>
+      <p>We're working on it. It's going to be sick. Check back, or just get on the mailing list so you're not refreshing this page like a weirdo.</p>
+      <a class="btn btn-primary" href="#follow">Get notified</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="follow">
+  <div class="wrap">
+    <div class="newsletter">
+      <div>
+        <h2>Don't miss an episode</h2>
+        <p>One email a week, whenever a new episode drops. No spam, mostly because we're too disorganized to send extra emails.</p>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Hook this up to your mailing list provider.');">
+        <input type="email" placeholder="you@email.com" required aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="footer-logo">Contact High</span>
+    <div class="footer-socials">
+      <a href="https://www.youtube.com/@ContactHighPodcast" target="_blank" rel="noopener">YouTube</a>
+      <a href="#" target="_blank" rel="noopener">Spotify</a>
+      <a href="#" target="_blank" rel="noopener">Apple Podcasts</a>
+      <a href="https://www.instagram.com/contact.high.podcast/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.instagram.com/rileyandflanagan/" target="_blank" rel="noopener">Riley</a>
+      <a href="https://www.instagram.com/mikefleming0/" target="_blank" rel="noopener">Michael</a>
+    </div>
+    <p class="fine">© 2026 Contact High Podcast. Website by Sam Sawyer.</p>
+  </div>
+</footer>
+
+</body>
+</html>
