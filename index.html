@@ -137,23 +137,8 @@
     padding: 40px 20px;
   }
 
-  .pin {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background: radial-gradient(circle at 35% 30%, #ff6b6b, #b23a3a 70%);
-    border-radius: 50%;
-    box-shadow: 0 2px 3px rgba(0,0,0,0.35);
-    z-index: 5;
-  }
-
   .logo-card {
-    background: var(--paper);
-    border: 3px solid var(--blue);
-    border-radius: 4px;
-    padding: 26px 40px;
     transform: rotate(-3deg);
-    box-shadow: 8px 8px 0 var(--blue);
     position: relative;
     animation: dropIn 0.7s cubic-bezier(.2,.9,.3,1.2) both;
   }
@@ -166,7 +151,7 @@
   .tagline-strip {
     margin-top: 34px;
     background: var(--blue);
-    color: var(--blue);
+    color: var(--paper);
     font-family: "quinella", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -210,8 +195,8 @@
     transition: transform 0.15s ease;
   }
   .btn:hover { transform: translateY(-2px) rotate(-1deg); }
-  .btn-primary { background: var(--green); color: var(--blue); }
-  .btn-outline { background: transparent; color: var(--blue); }
+  .btn-primary { background: var(--paper); color: var(--blue); }
+  .btn-outline { background: var(--paper); color: var(--blue); }
 
   @keyframes dropIn {
     from { opacity: 0; transform: translateY(-40px) rotate(-8deg) scale(0.9); }
@@ -564,11 +549,8 @@
 <header class="hero" id="top">
   <div class="wrap">
     <div class="corkboard">
-      <span class="pin" style="top: 6%; left: 44%;"></span>
-      <span class="pin" style="top: 4%; right: 12%;"></span>
-      <img src="5-Degree.gif" alt="" style="position: absolute; top: 2%; right: 6%; width: 120px; height: auto; filter: drop-shadow(4px 6px 8px rgba(28,43,74,0.3)); z-index: 4;">
       <div class="logo-card">
-        <img src="nameplate.png" alt="Contact High" style="width: min(80vw, 420px); height: auto; display: block;">
+        <img src="5-Degree.gif" alt="Contact High" style="width: min(80vw, 420px); height: auto; display: block;">
       </div>
       <div class="tagline-strip">Some guy on the street gave us microphones. Bad idea.</div>
       <p class="subtag">A comedy podcast hosted by Riley Flanagan &amp; Michael Fleming. New episodes every week — real conversations that go nowhere good.</p>
