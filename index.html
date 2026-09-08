@@ -315,19 +315,6 @@
   .stub:nth-child(odd) { transform: rotate(-2deg); }
   .stub:nth-child(even) { transform: rotate(1.5deg); }
   .stub:hover { transform: rotate(0deg) translateY(-4px); }
-  .stub::before, .stub::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: var(--paper);
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    border: 2px solid var(--blue);
-  }
-  .stub::before { left: -12px; }
-  .stub::after { right: -12px; }
   .stub .ep-num {
     font-family: "quinella", sans-serif;
     font-weight: 400;
@@ -552,11 +539,11 @@
       <div class="logo-card">
         <img src="5-Degree.gif" alt="Contact High" style="width: min(80vw, 420px); height: auto; display: block;">
       </div>
-      <div class="tagline-strip">Some guy on the street gave us microphones. Bad idea.</div>
+      <div class="tagline-strip" id="tagline-strip">Some guy on the street gave us microphones. Bad idea.</div>
       <p class="subtag">A comedy podcast hosted by Riley Flanagan &amp; Michael Fleming. New episodes every Monday.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="#episodes">Watch the latest episode</a>
-        <a class="btn btn-outline" href="#follow">Listen on Spotify</a>
+        <a class="btn btn-primary" id="latest-ep-btn" href="#episodes">Watch the latest episode</a>
+        <a class="btn btn-outline" href="https://open.spotify.com/show/1OAOLEeO6829CCtGZdwMiP" target="_blank" rel="noopener">Listen on Spotify</a>
       </div>
     </div>
   </div>
@@ -594,38 +581,11 @@
       <h2>Recent episodes</h2>
       <span class="section-tape">watch now</span>
     </div>
-    <div class="stub-row">
-      <article class="stub">
-        <span class="ep-num">EP. 17</span>
-        <h3>Alexis Tramoni Got Sued For A Holocaust Joke</h3>
-        <p>A French comedian joins us to talk lawsuits, synagogues, and Gandhi's letters to Hitler.</p>
-        <div class="perf"></div>
-        <a class="watch" href="#">Watch on YouTube →</a>
-      </article>
-      <article class="stub">
-        <span class="ep-num">EP. 16</span>
-        <h3>We Ranked Every Religion By How Much They Poop</h3>
-        <p>Also: a roofie trust test and the Santa Claus discourse nobody asked for.</p>
-        <div class="perf"></div>
-        <a class="watch" href="#">Watch on YouTube →</a>
-      </article>
-      <article class="stub">
-        <span class="ep-num">EP. 15</span>
-        <h3>Episode 15 of Contact High</h3>
-        <p>Add your real title and description here when you plug in the RSS feed.</p>
-        <div class="perf"></div>
-        <a class="watch" href="#">Watch on YouTube →</a>
-      </article>
-      <article class="stub">
-        <span class="ep-num">EP. 14</span>
-        <h3>Episode 14 of Contact High</h3>
-        <p>Add your real title and description here when you plug in the RSS feed.</p>
-        <div class="perf"></div>
-        <a class="watch" href="#">Watch on YouTube →</a>
-      </article>
+    <div class="stub-row" id="stub-row">
+      <p style="color: var(--blue); opacity: 0.7;">Loading episodes…</p>
     </div>
     <div class="see-all">
-      <a class="btn btn-outline" href="#">See every episode</a>
+      <a class="btn btn-outline" id="see-all-btn" href="https://www.youtube.com/@ContactHighPodcast/videos" target="_blank" rel="noopener">See every episode</a>
     </div>
   </div>
 </section>
@@ -691,13 +651,10 @@
   <div class="wrap">
     <div class="newsletter">
       <div>
-        <h2>Never miss an episode</h2>
-        <p>One email a week, whenever a new episode drops. No spam, mostly because we're too disorganized to send extra emails.</p>
+        <h2>No newsletter yet — for now, follow us</h2>
+        <p>We're building our mailing list, but it's not ready for subscribers yet. In the meantime, follow us on Instagram for episode drops, clips, and updates.</p>
       </div>
-      <form onsubmit="event.preventDefault(); alert('Hook this up to your mailing list provider.');">
-        <input type="email" placeholder="you@email.com" required aria-label="Email address">
-        <button type="submit">Subscribe</button>
-      </form>
+      <a class="btn btn-primary" href="https://www.instagram.com/contact.high.podcast/" target="_blank" rel="noopener" style="border-color: var(--paper);">Follow on Instagram</a>
     </div>
   </div>
 </section>
@@ -717,5 +674,160 @@
   </div>
 </footer>
 
+<script>
+  // ---------- RANDOM TAGLINE ----------
+  // Pulled from a bucket of ~100 short lines in the show's voice.
+  // Add, remove, or edit freely — one is picked at random on every page load.
+  const TAGLINES = [
+    "Some guy on the street gave us microphones. Bad idea.",
+    "We ranked religions by how much they poop. You're welcome.",
+    "Caveman chemo. It's a whole bit. Just watch it.",
+    "We invented Asian Santa Claus and we're not sorry.",
+    "Betel nut, roofie trust tests, and zero regrets.",
+    "He-Man was non-binary the whole time, apparently.",
+    "Blue-collar heaven is a real theory we came up with.",
+    "We almost died during someone else's driving test.",
+    "Robert Frost got roasted and honestly he deserved it.",
+    "We wrote a diss track about a poopy scoop.",
+    "Michael's video went viral mid-recording. We kept going.",
+    "Real conversations that go absolutely nowhere good.",
+    "We guessed the top 10 most milkable animals.",
+    "There's a bridge troll sketch and we will not explain it.",
+    "Riley rated Michael's burps. It got emotional.",
+    "We taught Kim Jong Un how to bomb. A sport, we mean.",
+    "Ancient aliens, voodoo, and a fourth dimension. Casual Tuesday.",
+    "We settled the Santa Claus discourse. Somehow it got worse.",
+    "Captain Israel showed up and things escalated.",
+    "Real vigilantes are never as cool as the movies. We checked.",
+    "We ranked superheroes by political party. Don't ask.",
+    "Ancestry.com ruined Michael's whole week.",
+    "Attila the Hun's body count came up. It always does.",
+    "A French comedian got sued for a joke on our show. Kind of.",
+    "We asked what Asian Santa's beard would look like.",
+    "Someone got a rock-paper-scissors explanation of French terrorism.",
+    "We debated if Trump is dead. He's probably fine.",
+    "Mitch McConnell's pulse got a whole segment.",
+    "We investigated whether Mary was actually a virgin.",
+    "Gandhi wrote letters to Hitler. We have thoughts.",
+    "Charlie Hebdo came up and nobody was ready for it.",
+    "We talked Mbappé, French soccer, and judo class secrets.",
+    "Dick pics got a whole cultural comparison segment.",
+    "Terracotta armies and dusty old men. It connects, trust us.",
+    "A guy told us how he found out Santa wasn't real. We all piled on.",
+    "We debated which accents get you laid in America.",
+    "Someone got rejected on Hinge live on the show.",
+    "Animal penis facts. We don't make the rules, we just report them.",
+    "A comedian performed for the Chief Rabbi of France. Long story.",
+    "We talked about losing a dad at 16 and somehow still made it funny.",
+    "The gummy bear song has more views than anything we'll ever make.",
+    "We debated if Future is hot. The debate got heated.",
+    "6ix9ine, Tory Lanez, and a diss track about poop. Naturally.",
+    "Are you a morning person? We are not, and it shows.",
+    "The Kabuki birthday poop story changed the trajectory of this show.",
+    "Jehovah's Witnesses, blood, and ancient cancer history. One segment.",
+    "We asked if Jay-Z is named HOV because he's a Jehovah's Witness.",
+    "A betel nut addict showed up to an NA meeting bit. It's a whole thing.",
+    "We're pretty sure we divided our fans on purpose this time.",
+    "Sending carrier pigeon messages to Rick Rubin. He never wrote back.",
+    "We got all the wars tatted on someone's chest. Ambitious.",
+    "There was a schizo on Riley's Amtrak trip. He's fine. We think.",
+    "Riley did his birthday dance on camera. Nobody asked.",
+    "We recorded an episode at 2:30 in the morning and it shows.",
+    "A betel nut episode happened. We don't recommend the betel nut.",
+    "We're pretty sure this episode divides our fans. Again.",
+    "Going pro in a sport nobody's heard of. We're serious.",
+    "An umpire impression sparked a whole new sport idea.",
+    "Riley puked something up at the county fair. We filmed it.",
+    "We wrote the Kidz Bop version of a song nobody asked for.",
+    "Parental fear tactics got their own segment. Ours were creative.",
+    "A hibachi chef nearly lost it and honestly, fair.",
+    "Michael went on a rant. We let the cameras roll.",
+    "Would popping a Viagra keep you safe in a haunted house? We debated it.",
+    "Riley really loves one actor. Like, a concerning amount.",
+    "Riley went on a rant about the TV show Suits. Extensive.",
+    "We clearly didn't read the book before this episode.",
+    "Mike loves watching videos of predators getting caught. We're worried.",
+    "Deep discussions on reality TV, bug people, and religion. One episode.",
+    "Michael finally got Riley contact high. It took six episodes.",
+    "Full-circle callbacks and some words for James Cameron.",
+    "Talking horror movies and David Nwaba with Chung Fu. Don't ask.",
+    "We probably should have scrapped this one. We didn't.",
+    "The boys ordered feline mignon. It's not what you think. Maybe it is.",
+    "Fifty intros, sweatshop kids, and detachable dongs. Episode one, baby.",
+    "Sweatshop interviews happened. We stand by none of it.",
+    "The Grand Wizard of the Mormon Church came up somehow.",
+    "We asked what kind of AIDS Magic Johnson had. It escalated fast.",
+    "Riley wants veggie-flavored vapes. We're still thinking about it.",
+    "We're glad Riley's sober now. Genuinely. Also it's funny.",
+    "How to spell our names. A tutorial nobody requested.",
+    "James Cameron? More like... we'll let the episode explain.",
+    "Choking on an ice cube at hibachi. Riley lived. Barely.",
+    "The tiger and the strawberry. It's a parable. We ruined it.",
+    "Did you watch Ed Gein? We have opinions. Bad ones.",
+    "Mr. Bean is a horror movie, not a comedy. Fight us.",
+    "We reviewed the new Rush Hour movie that doesn't exist.",
+    "Could you handle being super famous? We could not.",
+    "It's our turn to talk about Stoned Ape Theory. Buckle up.",
+    "Why are demons always wet in movies? A real question we asked.",
+    "Riley tried to impress a girl. It did not work.",
+    "Mike's freestyle happened. We're not proud, but we filmed it.",
+    "Who sings that? A game we invented and immediately lost.",
+    "Michael has something in common with wombats. It's not a compliment.",
+    "Have you ever met Demarcusson? Neither had we, until now.",
+    "Mom lends a helping hand. Do not ask further questions.",
+    "Not many things you can do without limbs. We tried anyway.",
+    "Would you suckle on a giraffe? A hypothetical that got real.",
+    "Which Asian accents are acceptable? A discussion we probably shouldn't have had.",
+    "What animal noise would you make? We committed to the bit.",
+    "Worst schools for ark building. A ranking nobody needed.",
+    "What do you wanna talk about? We genuinely don't know either.",
+  ];
+
+  const strip = document.getElementById('tagline-strip');
+  if (strip) {
+    strip.textContent = TAGLINES[Math.floor(Math.random() * TAGLINES.length)];
+  }
+
+  // ---------- DYNAMIC EPISODE CARDS ----------
+  // Reads episodes.json (kept up to date by the GitHub Action) and renders
+  // a card for every episode automatically — no manual card-editing needed.
+  fetch('episodes.json')
+    .then((res) => res.json())
+    .then((data) => {
+      const episodes = data.episodes || [];
+      const row = document.getElementById('stub-row');
+      const latestBtn = document.getElementById('latest-ep-btn');
+
+      if (!episodes.length) {
+        row.innerHTML = '<p style="color: var(--blue);">No episodes found yet.</p>';
+        return;
+      }
+
+      row.innerHTML = episodes.map((ep, i) => {
+        const epNumMatch = ep.title && ep.title.match(/#(\d+)/);
+        const label = epNumMatch ? `EP. ${epNumMatch[1]}` : `#${episodes.length - i}`;
+        const desc = ep.description ? ep.description : 'New episode of Contact High.';
+        return `
+          <article class="stub">
+            <span class="ep-num">${label}</span>
+            <h3>${ep.title}</h3>
+            <p>${desc}</p>
+            <div class="perf"></div>
+            <a class="watch" href="${ep.url}" target="_blank" rel="noopener">Watch on YouTube →</a>
+          </article>
+        `;
+      }).join('');
+
+      if (latestBtn && episodes[0]) {
+        latestBtn.href = episodes[0].url;
+        latestBtn.target = '_blank';
+        latestBtn.rel = 'noopener';
+      }
+    })
+    .catch(() => {
+      const row = document.getElementById('stub-row');
+      if (row) row.innerHTML = '<p style="color: var(--blue);">Couldn\'t load episodes right now — check back soon.</p>';
+    });
+</script>
 </body>
 </html>
