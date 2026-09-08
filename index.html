@@ -16,6 +16,7 @@
     --blue: #0033BE;
     --green: #00d33b;
     --charcoal: #2B2B2B;
+    --sheet: rgb(245 240 225 / 25%);
   }
 
   * { box-sizing: border-box; }
@@ -152,10 +153,10 @@
     margin-top: 34px;
     background: var(--blue);
     color: var(--paper);
-    font-family: "quinella", sans-serif;
-    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
     font-style: normal;
-    font-size: clamp(1rem, 2.4vw, 1.35rem);
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
     padding: 14px 26px;
     display: inline-block;
     transform: rotate(1.5deg);
@@ -183,15 +184,15 @@
   }
 
   .btn {
-    font-family: "quinella", sans-serif;
-    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
     font-style: normal;
     text-decoration: none;
     display: inline-block;
     padding: 13px 26px;
     border-radius: 999px;
     border: 3px solid var(--blue);
-    font-size: 1.02rem;
+    font-size: .9rem;
     transition: transform 0.15s ease;
   }
   .btn:hover { transform: translateY(-2px) rotate(-1deg); }
@@ -209,6 +210,7 @@
   .section {
     padding: 80px 0;
     border-top: 3px dashed rgba(28,43,74,0.25);
+    background: var(--sheet);
   }
   .section-head {
     display: flex;
@@ -236,6 +238,9 @@
     color: var(--blue);
     margin-top: -22px;
     margin-bottom: 40px;
+  }
+  #about, #guests {
+    background: var(--sheet);
   }
 
   /* ---------- ABOUT ---------- */
@@ -641,7 +646,7 @@
     </div>
     <div class="merch-box">
       <h3>A tie-dye hoodie is coming.</h3>
-      <p>We're working on it. It's going to be sick. Check back, or just get on the mailing list.</p>
+      <p>We're working on it. It's going to be sick. Check back, or follow us on Instagram.</p>
       <a class="btn btn-primary" href="#follow">Get notified</a>
     </div>
   </div>
@@ -651,8 +656,8 @@
   <div class="wrap">
     <div class="newsletter">
       <div>
-        <h2>No newsletter yet — for now, follow us</h2>
-        <p>We're building our mailing list, but it's not ready for subscribers yet. In the meantime, follow us on Instagram for episode drops, clips, and updates.</p>
+        <h2>Follow us on Instagram!</h2>
+        <p>Stay up-to-date on the latest episode drops, clips, and other updates.</p>
       </div>
       <a class="btn btn-primary" href="https://www.instagram.com/contact.high.podcast/" target="_blank" rel="noopener" style="border-color: var(--paper);">Follow on Instagram</a>
     </div>
@@ -676,8 +681,6 @@
 
 <script>
   // ---------- RANDOM TAGLINE ----------
-  // Pulled from a bucket of ~100 short lines in the show's voice.
-  // Add, remove, or edit freely — one is picked at random on every page load.
   const TAGLINES = [
     "Some guy on the street gave us microphones. Bad idea.",
     "We ranked religions by how much they poop. You're welcome.",
@@ -789,8 +792,6 @@
   }
 
   // ---------- DYNAMIC EPISODE CARDS ----------
-  // Reads episodes.json (kept up to date by the GitHub Action) and renders
-  // a card for every episode automatically — no manual card-editing needed.
   fetch('episodes.json')
     .then((res) => res.json())
     .then((data) => {
