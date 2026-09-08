@@ -121,6 +121,9 @@
       font-size: 1.1rem;
       cursor: pointer;
     }
+    .guest-tape-row {
+      justify-content: center;
+    }
   }
 
   /* ---------- HERO / CORKBOARD ---------- */
@@ -266,27 +269,18 @@
   .polaroid {
     background: var(--paper);
     border: 1px solid rgba(0,0,0,0.08);
-    padding: 12px 12px 46px;
-    width: 190px;
-    box-shadow: 4px 6px 14px rgba(28,43,74,0.15);
+    padding: 14px 14px 50px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 6px 8px 18px rgba(28,43,74,0.18);
     position: relative;
   }
   .polaroid:nth-child(1) { transform: rotate(-6deg); }
   .polaroid:nth-child(2) { transform: rotate(4deg); margin-top: 26px; }
   .polaroid .photo {
     width: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: 4 / 3;
     border-radius: 2px;
-    background: linear-gradient(135deg, var(--green), var(--blue));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--paper);
-    font-family: "quinella", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    letter-spacing: 0.03em;
-    font-size: 2.6rem;
   }
   .polaroid figcaption {
     position: absolute;
@@ -571,7 +565,7 @@
         <p>Full video episodes drop every Monday on YouTube and Spotify, with audio available on all other streaming platforms.</p>
       </div>
       <div class="polaroid-row">
-        <figure class="polaroid" style="width: 240px;">
+        <figure class="polaroid">
           <div class="photo" style="background: none;"><img src="boys.jpeg" alt="Riley and Michael" style="width: 100%; height: 100%; object-fit: cover; border-radius: 2px;"></div>
           <figcaption>Riley &amp; Michael</figcaption>
         </figure>
