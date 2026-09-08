@@ -1,0 +1,54 @@
+name: Update Episodes
+
+# Runs every hour, every day — but the "Check schedule window" step below
+# immediately exits (skipping the rest of the job) unless it's currently
+# Monday between 12:00am and 5:00pm US Eastern time. Checking real Eastern
+# time instead of hardcoded UTC hours means this stays correct automatically
+# across Daylight Saving changes — no manual updates needed twice a year.
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch: {}   # lets you manually trigger a run from the Actions tab anytime
+
+permissions:
+  contents: write
+
+jobs:
+  update-episodes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check schedule window (Mon 12am-5pm Eastern)
+        id: gate
+        run: |
+          day=$(TZ="America/New_York" date +%u)   # 1 = Monday ... 7 = Sunday
+          hour=$(TZ="America/New_York" date +%H)  # 00-23
+          if [ "$day" != "1" ] || [ "$hour" -gt "17" ]; then
+            echo "Outside the Monday 12am-5pm Eastern window (day=$day hour=$hour). Skipping."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Within window (day=$day hour=$hour). Proceeding."
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout repo
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch latest episodes
+        if: steps.gate.outputs.run == 'true'
+        run: node scripts/fetch-episodes.js
+
+      - name: Commit updated episodes.json (if changed)
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add episodes.json
+          git diff --staged --quiet || git commit -m "Auto-update episodes.json"
+          git push
