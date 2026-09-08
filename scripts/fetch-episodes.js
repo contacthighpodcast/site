@@ -33,6 +33,23 @@ function cleanTitle(title) {
   return title.replace(/\s*\|\s*Episode\s*#?\d+\s*of\s*Contact High\s*$/i, '').trim();
 }
 
+const BLURB_TARGET_LENGTH = 90; // roughly how long each card's description should read
+
+function makeBlurb(rawDescription) {
+  // Takes the first line of the YouTube description, then trims to a
+  // consistent length at a word boundary (never mid-word) so every card
+  // reads as roughly the same size instead of some being one line and
+  // others running long.
+  const firstLine = (rawDescription || '').split('\n')[0].trim();
+  if (!firstLine) return 'New episode of Contact High.';
+  if (firstLine.length <= BLURB_TARGET_LENGTH) return firstLine;
+
+  const cut = firstLine.slice(0, BLURB_TARGET_LENGTH);
+  const lastSpace = cut.lastIndexOf(' ');
+  const safeCut = lastSpace > 40 ? cut.slice(0, lastSpace) : cut; // avoid cutting too early on a long first word
+  return safeCut.trim() + '…';
+}
+
 async function main() {
   const xml = await fetchFeed(FEED_URL);
 
@@ -47,7 +64,7 @@ async function main() {
     url: `https://www.youtube.com/watch?v=${id}`,
     thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
     publishedAt: publishedDates[i] || null,
-    description: (descriptions[i] || '').split('\n')[0].slice(0, 200),
+    description: makeBlurb(descriptions[i]),
   }));
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify({ updatedAt: new Date().toISOString(), episodes }, null, 2));
