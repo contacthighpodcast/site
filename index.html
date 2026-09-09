@@ -272,6 +272,29 @@
     box-shadow: 6px 8px 18px rgba(28,43,74,0.18);
     position: relative;
   }
+  @media (min-width: 1000px) {
+  #about .wrap { position: relative; }
+  #about .about-grid {
+    display: block;
+    position: relative;
+  }
+  #about .about-copy {
+    max-width: 46%;
+  }
+  #about .polaroid-row {
+    position: absolute;
+    top: 50%;
+    right: -8vw;
+    transform: translateY(-50%);
+    width: 55vw;
+    max-width: 700px;
+    justify-content: flex-end;
+  }
+  #about .polaroid {
+    max-width: none;
+    width: 100%;
+  }
+  }
   .polaroid:nth-child(1) { transform: rotate(-6deg); }
   .polaroid:nth-child(2) { transform: rotate(4deg); margin-top: 26px; }
   .polaroid .photo {
@@ -545,7 +568,9 @@
         <img src="5-Degree.gif" alt="Contact High" style="width: min(80vw, 420px); height: auto; display: block;">
       </div>
       <div class="tagline-strip" id="tagline-strip">Some guy on the street gave us microphones. Bad idea.</div>
-      <p class="subtag">A comedy podcast hosted by <strong>Riley Flanagan</strong> &amp; <strong>Michael Fleming</strong>. New episodes every Monday.</p>
+      <p class="subtag">A comedy podcast hosted by <br> 
+      <strong>Riley Flanagan</strong> &amp; <strong>Michael Fleming</strong>. <br>
+      New episodes every Monday.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" id="latest-ep-btn" href="#episodes">Watch the latest episode</a>
         <a class="btn btn-outline" href="https://open.spotify.com/show/1OAOLEeO6829CCtGZdwMiP" target="_blank" rel="noopener">Listen on Spotify</a>
@@ -600,37 +625,45 @@
     </div>
     <div class="guest-tape-row">
       <div class="guest-card">
-        <div class="tape-strip"></div>
-        <div class="frame">
-          <div class="photo" style="background: none;"><img src="alexis.avif" alt="Alexis Tramoni" style="width: 100%; height: 100%; object-fit: cover; border-radius: 2px;"></div>
-        </div>
-        <h4>Alexis Tramoni</h4>
-        <span>Episode 17</span>
-      </div>
-      <div class="guest-card">
-        <div class="tape-strip"></div>
-        <div class="frame">
-          <div class="photo" style="background: none;"><img src="james.jpg" alt="James Patrick" style="width: 100%; height: 100%; object-fit: cover; border-radius: 2px;"></div>
-        </div>
-        <h4>James Patrick</h4>
-        <span>Episodes 11–17</span>
-      </div>
-      <div class="guest-card">
-        <div class="tape-strip"></div>
-        <div class="frame">
-          <div class="photo" style="background: none;"><img src="jake.png" alt="Jake Domanski" style="width: 100%; height: 100%; object-fit: cover; border-radius: 2px;"></div>
-        </div>
-        <h4>Jake Domanski</h4>
-        <span>Episode 13</span>
-      </div>
-      <div class="guest-card">
-        <div class="tape-strip"></div>
-        <div class="frame">
-          <div class="photo" style="background: none;"><img src="tanner.png" alt="Tanner Simon" style="width: 100%; height: 100%; object-fit: cover; border-radius: 2px;"></div>
-        </div>
-        <h4>Tanner Simon</h4>
-        <span>Episodes 11+12</span>
-      </div>
+  <div class="tape-strip"></div>
+  <a href="https://www.instagram.com/alexistramoni/" target="_blank" rel="noopener" style="text-decoration: none; display: block;">
+    <div class="frame">
+      <div class="photo">AT</div>
+    </div>
+    <h4>Alexis Tramoni</h4>
+  </a>
+  <span>Episode 17</span>
+</div>
+<div class="guest-card">
+  <div class="tape-strip"></div>
+  <a href="https://www.instagram.com/maybejamespatrick/" target="_blank" rel="noopener" style="text-decoration: none; display: block;">
+    <div class="frame">
+      <div class="photo">JP</div>
+    </div>
+    <h4>James Patrick</h4>
+  </a>
+  <span>Episodes 11–17</span>
+</div>
+<div class="guest-card">
+  <div class="tape-strip"></div>
+  <a href="https://www.instagram.com/jakedomanskiman/" target="_blank" rel="noopener" style="text-decoration: none; display: block;">
+    <div class="frame">
+      <div class="photo">JD</div>
+    </div>
+    <h4>Jake Domanski</h4>
+  </a>
+  <span>Episode 13</span>
+</div>
+<div class="guest-card">
+  <div class="tape-strip"></div>
+  <a href="https://www.instagram.com/tannerjsimon/" target="_blank" rel="noopener" style="text-decoration: none; display: block;">
+    <div class="frame">
+      <div class="photo">TS</div>
+    </div>
+    <h4>Tanner Simon</h4>
+  </a>
+  <span>Episodes 11+12</span>
+</div>
     </div>
   </div>
 </section>
