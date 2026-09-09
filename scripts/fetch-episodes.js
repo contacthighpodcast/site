@@ -50,8 +50,25 @@ function makeBlurb(rawDescription) {
   return safeCut.trim() + '…';
 }
 
+function loadExistingDescriptions() {
+  // Reads whatever episodes.json already exists in the repo and returns a
+  // map of videoId -> description, so hand-written lines (added manually,
+  // not auto-generated) never get clobbered by this script.
+  try {
+    const existing = JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf8'));
+    const map = {};
+    for (const ep of existing.episodes || []) {
+      if (ep.videoId && ep.description) map[ep.videoId] = ep.description;
+    }
+    return map;
+  } catch {
+    return {}; // no existing file yet, or it's unreadable — start fresh
+  }
+}
+
 async function main() {
   const xml = await fetchFeed(FEED_URL);
+  const existingDescriptions = loadExistingDescriptions();
 
   const videoIds = extractAll(/<yt:videoId>(.*?)<\/yt:videoId>/g, xml);
   const rawTitles = extractAll(/<media:title>(.*?)<\/media:title>/g, xml);
@@ -64,7 +81,9 @@ async function main() {
     url: `https://www.youtube.com/watch?v=${id}`,
     thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
     publishedAt: publishedDates[i] || null,
-    description: makeBlurb(descriptions[i]),
+    // A manually-written description always wins. Only brand-new videos
+    // (no entry yet) get the auto-generated fallback blurb.
+    description: existingDescriptions[id] || makeBlurb(descriptions[i]),
   }));
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify({ updatedAt: new Date().toISOString(), episodes }, null, 2));
