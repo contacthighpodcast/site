@@ -121,9 +121,6 @@
       font-size: 1.1rem;
       cursor: pointer;
     }
-    .guest-tape-row {
-      justify-content: center;
-    }
   }
 
   /* ---------- HERO / CORKBOARD ---------- */
@@ -359,6 +356,11 @@
     flex-wrap: wrap;
     gap: 30px;
     justify-content: flex-start;
+  }
+  @media (max-width: 720px) {
+    .guest-tape-row {
+      justify-content: center;
+    }
   }
   .guest-card {
     width: 170px;
@@ -599,7 +601,7 @@
       <div class="guest-card">
         <div class="tape-strip"></div>
         <div class="frame">
-          <div class="photo">AT</div>
+          <div class="photo" style="background: none;"><img src="alexis.avif" alt="Alexis Tramoni" style="width: 100%; height: 100%; object-fit: cover; border-radius: 2px;"></div>
         </div>
         <h4>Alexis Tramoni</h4>
         <span>Episode 17</span>
@@ -607,7 +609,7 @@
       <div class="guest-card">
         <div class="tape-strip"></div>
         <div class="frame">
-          <div class="photo">JP</div>
+          <div class="photo" style="background: none;"><img src="james.jpg" alt="James Patrick" style="width: 100%; height: 100%; object-fit: cover; border-radius: 2px;"></div>
         </div>
         <h4>James Patrick</h4>
         <span>Episodes 11–17</span>
@@ -615,7 +617,7 @@
       <div class="guest-card">
         <div class="tape-strip"></div>
         <div class="frame">
-          <div class="photo">JD</div>
+          <div class="photo" style="background: none;"><img src="jake.png" alt="Jake Domanski" style="width: 100%; height: 100%; object-fit: cover; border-radius: 2px;"></div>
         </div>
         <h4>Jake Domanski</h4>
         <span>Episode 13</span>
@@ -623,7 +625,7 @@
       <div class="guest-card">
         <div class="tape-strip"></div>
         <div class="frame">
-          <div class="photo">TS</div>
+          <div class="photo" style="background: none;"><img src="tanner.png" alt="Tanner Simon" style="width: 100%; height: 100%; object-fit: cover; border-radius: 2px;"></div>
         </div>
         <h4>Tanner Simon</h4>
         <span>Episodes 11+12</span>
