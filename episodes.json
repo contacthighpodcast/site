@@ -1,12 +1,20 @@
 {
-  "updatedAt": "2026-09-14T12:02:33.450Z",
+  "updatedAt": "2026-09-14T18:22:51.911Z",
   "episodes": [
+    {
+      "videoId": "_B86ZSY8JLQ",
+      "title": "Eating a mystery food that got pulled out mid podcast",
+      "url": "https://www.youtube.com/watch?v=_B86ZSY8JLQ",
+      "thumbnail": "https://i.ytimg.com/vi/_B86ZSY8JLQ/hqdefault.jpg",
+      "publishedAt": "2026-04-30T21:47:11+00:00",
+      "description": "James was kind enough to bring some upholstery foam to share with the boys. Watch episode…"
+    },
     {
       "videoId": "orbWa7slpuc",
       "title": "Jimmy McCullough Samples a Strange Food with Us",
       "url": "https://www.youtube.com/watch?v=orbWa7slpuc",
       "thumbnail": "https://i.ytimg.com/vi/orbWa7slpuc/hqdefault.jpg",
-      "publishedAt": "2026-04-30T21:47:11+00:00",
+      "publishedAt": "2026-09-14T12:42:19+00:00",
       "description": "Welcome back! This week Jimmy McCullough joins the boys to relive a McDonald's drive-thru…"
     },
     {
@@ -112,14 +120,6 @@
       "thumbnail": "https://i.ytimg.com/vi/Ntbgnmo1CVA/hqdefault.jpg",
       "publishedAt": "2026-08-26T18:09:35+00:00",
       "description": "Some drunk lady somehow stumbled into the green room at one of James’ recent shows…"
-    },
-    {
-      "videoId": "bQ9F4FfXYFk",
-      "title": "Sending Carrier Pigeon Messages to Rick Rubin",
-      "url": "https://www.youtube.com/watch?v=bQ9F4FfXYFk",
-      "thumbnail": "https://i.ytimg.com/vi/bQ9F4FfXYFk/hqdefault.jpg",
-      "publishedAt": "2026-08-26T15:34:16+00:00",
-      "description": "Welcome back! This is part 2 of the previous episode, so prepare for EVEN-LATER-night…"
     }
   ]
 }
