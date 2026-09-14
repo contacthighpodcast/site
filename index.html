@@ -332,6 +332,8 @@
     position: relative;
     padding: 18px 18px 20px;
     transition: transform 0.18s ease;
+    display: block;
+    text-decoration: none;
   }
   .stub:nth-child(odd) { transform: rotate(-2deg); }
   .stub:nth-child(even) { transform: rotate(1.5deg); }
@@ -846,13 +848,13 @@
         const label = epNumMatch ? `EP. ${epNumMatch[1]}` : `#${episodes.length - i}`;
         const desc = ep.description ? ep.description : 'New episode of Contact High.';
         return `
-          <article class="stub">
+          <a class="stub" href="${ep.url}" target="_blank" rel="noopener">
             <span class="ep-num">${label}</span>
             <h3>${ep.title}</h3>
             <p>${desc}</p>
             <div class="perf"></div>
-            <a class="watch" href="${ep.url}" target="_blank" rel="noopener">Watch on YouTube →</a>
-          </article>
+            <span class="watch">Watch on YouTube →</span>
+          </a>
         `;
       }).join('');
 
