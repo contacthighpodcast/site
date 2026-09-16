@@ -42,6 +42,8 @@ jobs:
 
       - name: Fetch latest episodes
         if: steps.gate.outputs.run == 'true'
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: node scripts/fetch-episodes.js
 
       - name: Commit updated episodes.json (if changed)
