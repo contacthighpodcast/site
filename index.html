@@ -347,6 +347,7 @@
     padding: 3px 10px;
     border-radius: 999px;
     margin-bottom: 10px;
+    white-space: nowrap;
   }
   .stub h3 {
     font-size: 1.15rem;
@@ -632,7 +633,7 @@
           </div>
           <h4>Jimmy McCullough</h4>
         </a>
-        <span>Episode 18</span>
+        <span>Episode 18+19</span>
       </div>
       <div class="guest-card">
         <div class="tape-strip"></div>
@@ -652,7 +653,7 @@
           </div>
           <h4>James Patrick</h4>
         </a>
-        <span>Episodes 11–17</span>
+        <span>Episodes 11–20</span>
       </div>
       <div class="guest-card">
         <div class="tape-strip"></div>
@@ -843,9 +844,12 @@
         return;
       }
 
+      let epCounter = episodes.filter(ep => !/best (of|moments)|episodes?\s*\d+\s*(?:-|–|to)\s*\d+/i.test(ep.title)).length;
+
       row.innerHTML = episodes.map((ep, i) => {
-        const epNumMatch = ep.title && ep.title.match(/#(\d+)/);
-        const label = epNumMatch ? `EP. ${epNumMatch[1]}` : `#${episodes.length - i}`;
+        const best = /best (of|moments)|episodes?\s*\d+\s*(?:-|–|to)\s*\d+/i.test(ep.title);
+        const range = ep.title.match(/(\d+)\s*(?:-|–|to)\s*(\d+)/);
+        const label = best ? (range ? `BEST OF #${range[1]}-${range[2]}` : 'BEST OF') : `EP. ${epCounter--}`;
         const desc = ep.description ? ep.description : 'New episode of Contact High.';
         return `
           <a class="stub" href="${ep.url}" target="_blank" rel="noopener">
