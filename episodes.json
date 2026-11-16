@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-11-09T20:28:55.089Z",
+  "updatedAt": "2026-11-16T05:12:52.091Z",
   "episodes": [
+    {
+      "videoId": "21YWHdAac6Y",
+      "title": "Mike Plays a New Game | From Episode 24 of Contact High",
+      "url": "https://www.youtube.com/watch?v=21YWHdAac6Y",
+      "thumbnail": "https://i.ytimg.com/vi/21YWHdAac6Y/hqdefault.jpg",
+      "publishedAt": "2026-11-11T13:00:43Z",
+      "description": "Welcome to a Chunk, our in-between videos that are longer than a clip and shorter than a…"
+    },
     {
       "videoId": "Mje0PJS5Ilc",
       "title": "Our Brains Aren't THAT Fried",
@@ -19,7 +27,7 @@
     },
     {
       "videoId": "LzJNXdOmRBA",
-      "title": "THE DARK LORE OF NICKELODEON",
+      "title": "THE DARK LORE OF NICKELODEON | From Episode 23 of Contact High",
       "url": "https://www.youtube.com/watch?v=LzJNXdOmRBA",
       "thumbnail": "https://i.ytimg.com/vi/LzJNXdOmRBA/hqdefault.jpg",
       "publishedAt": "2026-11-02T20:12:26Z",
